@@ -1,0 +1,28 @@
+name: expressions
+run-name: Expressions
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      age:
+        description: "Age"
+        required: true
+      name:
+        description: "Name"
+        required: true
+        default: "Alberto"
+        type: string
+jobs:
+  check-branch:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run script
+        run: echo You are in the main branch
+  young:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.age >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run script
+        run: echo ${{ inputs.name }} is a young boy

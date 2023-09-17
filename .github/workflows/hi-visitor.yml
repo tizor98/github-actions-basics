@@ -1,4 +1,5 @@
 name: hi-visitor
+run-name: Workflow to say hellow
 on:
   push:
     branches: ["main"]
